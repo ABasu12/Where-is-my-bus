@@ -1,0 +1,8 @@
+{
+  "name": "BusTrack: Government Transit Live",
+  "description": "Real-time tracking for government bus services with live routes and schedules.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}

@@ -1,0 +1,26 @@
+{
+  "entities": {
+    "BusLocation": {
+      "title": "BusLocation",
+      "description": "Real-time location and status of a transit bus",
+      "type": "object",
+      "properties": {
+        "lat": { "type": "number", "description": "Current latitude" },
+        "lng": { "type": "number", "description": "Current longitude" },
+        "speed": { "type": "number", "description": "Current speed in km/h" },
+        "lastUpdated": { "type": "string", "format": "date-time", "description": "ISO timestamp of last GPS update" },
+        "routeId": { "type": "string", "description": "ID of the assigned route" },
+        "driverId": { "type": "string", "description": "UID of the driver currently operating the bus" },
+        "status": { "type": "string", "enum": ["on-time", "delayed", "early"], "description": "Current arrival status" },
+        "occupancy": { "type": "string", "enum": ["low", "medium", "high"], "description": "Passenger density" }
+      },
+      "required": ["lat", "lng", "lastUpdated", "routeId", "driverId"]
+    }
+  },
+  "firestore": {
+    "/buses/{busId}": {
+      "schema": "BusLocation",
+      "description": "Live tracking data for active buses"
+    }
+  }
+}
